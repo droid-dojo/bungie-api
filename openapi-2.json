@@ -13,7 +13,7 @@
       "name": "BSD License 2.0",
       "url": "https://github.com/Bungie-net/api/blob/master/LICENSE"
     },
-    "version": "2.16.0"
+    "version": "2.18.0"
   },
   "host": "www.bungie.net",
   "basePath": "/Platform",
@@ -1173,6 +1173,18 @@
         "description": "Returns a JSON string response that is the RSS feed for news articles.",
         "operationId": "Content.RssNewsArticles",
         "parameters": [
+          {
+            "name": "categoryfilter",
+            "in": "query",
+            "description": "Optionally filter response to only include news items in a certain category.",
+            "type": "string"
+          },
+          {
+            "name": "includebody",
+            "in": "query",
+            "description": "Optionally include full content body for each news item.",
+            "type": "boolean"
+          },
           {
             "name": "pageToken",
             "in": "path",
@@ -6182,6 +6194,250 @@
         }
       }
     },
+    "/Destiny2/Actions/Loadouts/EquipLoadout/": {
+      "post": {
+        "tags": [
+          "Destiny2"
+        ],
+        "description": "Equip a loadout. You must have a valid Destiny Account, and either be in a social space, in orbit, or offline.",
+        "operationId": "Destiny2.EquipLoadout",
+        "parameters": [],
+        "deprecated": false,
+        "security": [
+          {
+            "oauth2": [
+              "MoveEquipDestinyItems"
+            ]
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Look at the Response property for more information about the nature of this response",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "Response": {
+                  "format": "int32",
+                  "type": "integer"
+                },
+                "ErrorCode": {
+                  "format": "int32",
+                  "type": "integer",
+                  "x-enum-reference": {
+                    "$ref": "#/components/schemas/Exceptions.PlatformErrorCodes"
+                  }
+                },
+                "ThrottleSeconds": {
+                  "format": "int32",
+                  "type": "integer"
+                },
+                "ErrorStatus": {
+                  "type": "string"
+                },
+                "Message": {
+                  "type": "string"
+                },
+                "MessageData": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "string"
+                  }
+                },
+                "DetailedErrorTrace": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        },
+        "x-documentation-attributes": {
+          "ThrottleSecondsBetweenActionPerUser": "1"
+        }
+      }
+    },
+    "/Destiny2/Actions/Loadouts/SnapshotLoadout/": {
+      "post": {
+        "tags": [
+          "Destiny2"
+        ],
+        "description": "Snapshot a loadout with the currently equipped items.",
+        "operationId": "Destiny2.SnapshotLoadout",
+        "parameters": [],
+        "deprecated": false,
+        "security": [
+          {
+            "oauth2": [
+              "MoveEquipDestinyItems"
+            ]
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Look at the Response property for more information about the nature of this response",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "Response": {
+                  "format": "int32",
+                  "type": "integer"
+                },
+                "ErrorCode": {
+                  "format": "int32",
+                  "type": "integer",
+                  "x-enum-reference": {
+                    "$ref": "#/components/schemas/Exceptions.PlatformErrorCodes"
+                  }
+                },
+                "ThrottleSeconds": {
+                  "format": "int32",
+                  "type": "integer"
+                },
+                "ErrorStatus": {
+                  "type": "string"
+                },
+                "Message": {
+                  "type": "string"
+                },
+                "MessageData": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "string"
+                  }
+                },
+                "DetailedErrorTrace": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        },
+        "x-documentation-attributes": {
+          "ThrottleSecondsBetweenActionPerUser": "1"
+        }
+      }
+    },
+    "/Destiny2/Actions/Loadouts/UpdateLoadoutIdentifiers/": {
+      "post": {
+        "tags": [
+          "Destiny2"
+        ],
+        "description": "Update the color, icon, and name of a loadout.",
+        "operationId": "Destiny2.UpdateLoadoutIdentifiers",
+        "parameters": [],
+        "deprecated": false,
+        "security": [
+          {
+            "oauth2": [
+              "MoveEquipDestinyItems"
+            ]
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Look at the Response property for more information about the nature of this response",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "Response": {
+                  "format": "int32",
+                  "type": "integer"
+                },
+                "ErrorCode": {
+                  "format": "int32",
+                  "type": "integer",
+                  "x-enum-reference": {
+                    "$ref": "#/components/schemas/Exceptions.PlatformErrorCodes"
+                  }
+                },
+                "ThrottleSeconds": {
+                  "format": "int32",
+                  "type": "integer"
+                },
+                "ErrorStatus": {
+                  "type": "string"
+                },
+                "Message": {
+                  "type": "string"
+                },
+                "MessageData": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "string"
+                  }
+                },
+                "DetailedErrorTrace": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        },
+        "x-documentation-attributes": {
+          "ThrottleSecondsBetweenActionPerUser": "1"
+        }
+      }
+    },
+    "/Destiny2/Actions/Loadouts/ClearLoadout/": {
+      "post": {
+        "tags": [
+          "Destiny2"
+        ],
+        "description": "Clear the identifiers and items of a loadout.",
+        "operationId": "Destiny2.ClearLoadout",
+        "parameters": [],
+        "deprecated": false,
+        "security": [
+          {
+            "oauth2": [
+              "MoveEquipDestinyItems"
+            ]
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Look at the Response property for more information about the nature of this response",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "Response": {
+                  "format": "int32",
+                  "type": "integer"
+                },
+                "ErrorCode": {
+                  "format": "int32",
+                  "type": "integer",
+                  "x-enum-reference": {
+                    "$ref": "#/components/schemas/Exceptions.PlatformErrorCodes"
+                  }
+                },
+                "ThrottleSeconds": {
+                  "format": "int32",
+                  "type": "integer"
+                },
+                "ErrorStatus": {
+                  "type": "string"
+                },
+                "Message": {
+                  "type": "string"
+                },
+                "MessageData": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "string"
+                  }
+                },
+                "DetailedErrorTrace": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        },
+        "x-documentation-attributes": {
+          "ThrottleSecondsBetweenActionPerUser": "1"
+        }
+      }
+    },
     "/Destiny2/Actions/Items/SetLockState/": {
       "post": {
         "tags": [
@@ -8119,6 +8375,12 @@
             "format": "byte"
           },
           {
+            "name": "excludeImmediate",
+            "in": "query",
+            "description": "If you wish the result to exclude immediate fireteams, set this to true. Immediate-only can be forced using the dateRange enum.",
+            "type": "boolean"
+          },
+          {
             "name": "groupId",
             "in": "path",
             "description": "The group id of the clan.",
@@ -8237,6 +8499,12 @@
             "required": true,
             "type": "integer",
             "format": "byte"
+          },
+          {
+            "name": "excludeImmediate",
+            "in": "query",
+            "description": "If you wish the result to exclude immediate fireteams, set this to true. Immediate-only can be forced using the dateRange enum.",
+            "type": "boolean"
           },
           {
             "name": "langFilter",
@@ -10815,6 +11083,9 @@
         "ResultCountThisPage": {
           "format": "int32",
           "type": "integer"
+        },
+        "CategoryFilter": {
+          "type": "string"
         }
       }
     },
@@ -10835,6 +11106,15 @@
           "type": "string"
         },
         "Description": {
+          "type": "string"
+        },
+        "HtmlContent": {
+          "type": "string"
+        },
+        "ImagePath": {
+          "type": "string"
+        },
+        "OptionalMobileImagePath": {
           "type": "string"
         }
       }
@@ -16095,7 +16375,8 @@
             "87",
             "88",
             "89",
-            "90"
+            "90",
+            "91"
           ],
           "type": "integer",
           "x-enum-values": [
@@ -16431,6 +16712,10 @@
             {
               "numericValue": "90",
               "identifier": "IronBannerRift"
+            },
+            {
+              "numericValue": "91",
+              "identifier": "IronBannerZoneControl"
             }
           ]
         },
@@ -16932,7 +17217,8 @@
         "3",
         "4",
         "5",
-        "6"
+        "6",
+        "7"
       ],
       "type": "integer",
       "x-enum-values": [
@@ -16963,6 +17249,10 @@
         {
           "numericValue": "6",
           "identifier": "Stasis"
+        },
+        {
+          "numericValue": "7",
+          "identifier": "Strand"
         }
       ]
     },
@@ -17310,6 +17600,15 @@
           "x-enum-reference": {
             "$ref": "#/components/schemas/Destiny.DamageType"
           }
+        },
+        "color": {
+          "description": "A color associated with the damage type. The displayProperties icon is tinted with a color close to this.",
+          "type": "object",
+          "allOf": [
+            {
+              "$ref": "#/definitions/Destiny.Misc.DestinyColor"
+            }
+          ]
         },
         "hash": {
           "format": "uint32",
@@ -17749,7 +18048,8 @@
             "87",
             "88",
             "89",
-            "90"
+            "90",
+            "91"
           ],
           "type": "integer",
           "x-enum-values": [
@@ -18085,6 +18385,10 @@
             {
               "numericValue": "90",
               "identifier": "IronBannerRift"
+            },
+            {
+              "numericValue": "91",
+              "identifier": "IronBannerZoneControl"
             }
           ]
         },
@@ -18199,7 +18503,8 @@
         "87",
         "88",
         "89",
-        "90"
+        "90",
+        "91"
       ],
       "type": "integer",
       "x-enum-values": [
@@ -18535,6 +18840,10 @@
         {
           "numericValue": "90",
           "identifier": "IronBannerRift"
+        },
+        {
+          "numericValue": "91",
+          "identifier": "IronBannerZoneControl"
         }
       ]
     },
@@ -20135,16 +20444,6 @@
         "displayProperties": {
           "$ref": "#/definitions/Destiny.Definitions.Common.DestinyDisplayPropertiesDefinition"
         },
-        "traitCategoryId": {
-          "type": "string"
-        },
-        "traitCategoryHash": {
-          "format": "uint32",
-          "type": "integer",
-          "x-mapped-definition": {
-            "$ref": "#/definitions/Destiny.Definitions.Traits.DestinyTraitCategoryDefinition"
-          }
-        },
         "displayHint": {
           "description": "An identifier for how this trait can be displayed. For example: a 'keyword' hint to show an explanation for certain related terms.",
           "type": "string"
@@ -20165,45 +20464,6 @@
         }
       },
       "x-mobile-manifest-name": "Traits"
-    },
-    "Destiny.Definitions.Traits.DestinyTraitCategoryDefinition": {
-      "type": "object",
-      "properties": {
-        "traitCategoryId": {
-          "type": "string"
-        },
-        "traitHashes": {
-          "type": "array",
-          "items": {
-            "format": "uint32",
-            "type": "integer"
-          },
-          "x-mapped-definition": {
-            "$ref": "#/definitions/Destiny.Definitions.Traits.DestinyTraitDefinition"
-          }
-        },
-        "traitIds": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        },
-        "hash": {
-          "format": "uint32",
-          "description": "The unique identifier for this entity. Guaranteed to be unique for the type of entity, but not globally.\r\nWhen entities refer to each other in Destiny content, it is this hash that they are referring to.",
-          "type": "integer"
-        },
-        "index": {
-          "format": "int32",
-          "description": "The index of the entity as it was found in the investment tables.",
-          "type": "integer"
-        },
-        "redacted": {
-          "description": "If this is true, then there is an entity with this identifier/type combination, but BNet is not yet allowed to show it. Sorry!",
-          "type": "boolean"
-        }
-      },
-      "x-mobile-manifest-name": "TraitCategories"
     },
     "Destiny.Definitions.Presentation.DestinyScoredPresentationNodeBaseDefinition": {
       "type": "object",
@@ -20692,7 +20952,9 @@
         "1",
         "2",
         "3",
-        "4"
+        "4",
+        "5",
+        "6"
       ],
       "type": "integer",
       "x-enum-values": [
@@ -20716,6 +20978,14 @@
         {
           "numericValue": "4",
           "identifier": "Record"
+        },
+        {
+          "numericValue": "5",
+          "identifier": "SeasonalTriumph"
+        },
+        {
+          "numericValue": "6",
+          "identifier": "GuardianRank"
         }
       ]
     },
@@ -20965,7 +21235,8 @@
         "5",
         "6",
         "7",
-        "8"
+        "8",
+        "9"
       ],
       "type": "integer",
       "x-enum-values": [
@@ -21004,6 +21275,10 @@
         {
           "numericValue": "8",
           "identifier": "CraftingRecipeUnlocked"
+        },
+        {
+          "numericValue": "9",
+          "identifier": "ToastGuardianRankDetails"
         }
       ]
     },
@@ -24450,6 +24725,9 @@
         "239",
         "240",
         "241",
+        "242",
+        "243",
+        "244",
         "300",
         "301",
         "302",
@@ -24660,6 +24938,8 @@
         "751",
         "752",
         "753",
+        "754",
+        "755",
         "801",
         "802",
         "803",
@@ -24960,6 +25240,8 @@
         "2506",
         "2507",
         "2508",
+        "2509",
+        "2510",
         "2600",
         "2601",
         "2700",
@@ -25154,8 +25436,7 @@
         },
         {
           "numericValue": "14",
-          "identifier": "UnknownSqlResult",
-          "description": "Deprecated, please do not check for this value anywhere."
+          "identifier": "UnknownSqlResult"
         },
         {
           "numericValue": "15",
@@ -25872,6 +26153,18 @@
         {
           "numericValue": "241",
           "identifier": "ErrorNameAlreadySetToInput"
+        },
+        {
+          "numericValue": "242",
+          "identifier": "UserDisplayNameLessThanMinLength"
+        },
+        {
+          "numericValue": "243",
+          "identifier": "UserDisplayNameGreaterThanMaxLength"
+        },
+        {
+          "numericValue": "244",
+          "identifier": "UserDisplayNameContainsUnacceptableOrInvalidContent"
         },
         {
           "numericValue": "300",
@@ -26712,6 +27005,14 @@
         {
           "numericValue": "753",
           "identifier": "ClanCreationTenureRequirementsNotMet"
+        },
+        {
+          "numericValue": "754",
+          "identifier": "ClanFieldContainsReservedTerms"
+        },
+        {
+          "numericValue": "755",
+          "identifier": "ClanFieldContainsInappropriateContent"
         },
         {
           "numericValue": "801",
@@ -27913,6 +28214,14 @@
         {
           "numericValue": "2508",
           "identifier": "TwitchDropsRepairPartialFailure"
+        },
+        {
+          "numericValue": "2509",
+          "identifier": "TwitchNotAuthorized"
+        },
+        {
+          "numericValue": "2510",
+          "identifier": "TwitchUnknownAuthorizationFailure"
         },
         {
           "numericValue": "2600",
@@ -29154,7 +29463,8 @@
             "32",
             "64",
             "128",
-            "256"
+            "256",
+            "512"
           ],
           "type": "integer",
           "x-enum-values": [
@@ -29197,6 +29507,10 @@
             {
               "numericValue": "256",
               "identifier": "TheWitchQueen"
+            },
+            {
+              "numericValue": "512",
+              "identifier": "Lightfall"
             }
           ]
         },
@@ -29561,7 +29875,8 @@
         "32",
         "64",
         "128",
-        "256"
+        "256",
+        "512"
       ],
       "type": "integer",
       "x-enum-values": [
@@ -29604,6 +29919,10 @@
         {
           "numericValue": "256",
           "identifier": "TheWitchQueen"
+        },
+        {
+          "numericValue": "512",
+          "identifier": "Lightfall"
         }
       ]
     },
@@ -29647,6 +29966,7 @@
         "203",
         "204",
         "205",
+        "206",
         "300",
         "301",
         "302",
@@ -29669,7 +29989,8 @@
         "1000",
         "1100",
         "1200",
-        "1300"
+        "1300",
+        "1400"
       ],
       "type": "integer",
       "x-enum-values": [
@@ -29736,6 +30057,11 @@
           "numericValue": "205",
           "identifier": "CharacterEquipment",
           "description": "This will return info about the equipped items on the character(s). Everyone can see this."
+        },
+        {
+          "numericValue": "206",
+          "identifier": "CharacterLoadouts",
+          "description": "This will return info about the loadouts of the character(s)."
         },
         {
           "numericValue": "300",
@@ -29851,6 +30177,11 @@
           "numericValue": "1300",
           "identifier": "Craftables",
           "description": "Returns summary status information about all \"Craftables\" aka crafting recipe items."
+        },
+        {
+          "numericValue": "1400",
+          "identifier": "SocialCommendations",
+          "description": "Returns score values for all commendations and commendation nodes."
         }
       ]
     },
@@ -29858,6 +30189,16 @@
       "description": "The response for GetDestinyProfile, with components for character and item-level data.",
       "type": "object",
       "properties": {
+        "responseMintedTimestamp": {
+          "format": "date-time",
+          "description": "Records the timestamp of when most components were last generated from the world server source. Unless the component type is specified in the documentation for secondaryComponentsMintedTimestamp, this value is sufficient to do data freshness.",
+          "type": "string"
+        },
+        "secondaryComponentsMintedTimestamp": {
+          "format": "date-time",
+          "description": "Some secondary components are not tracked in the primary response timestamp and have their timestamp tracked here. If your component is any of the following, this field is where you will find your timestamp value:\r\n PresentationNodes, Records, Collectibles, Metrics, StringVariables, Craftables, Transitory\r\n All other component types may use the primary timestamp property.",
+          "type": "string"
+        },
         "vendorReceipts": {
           "description": "Recent, refundable purchases you have made from vendors. When will you use it? Couldn't say...\r\nCOMPONENT TYPE: VendorReceipts",
           "type": "object",
@@ -29998,6 +30339,16 @@
           ],
           "x-destiny-component-type-dependency": "StringVariables"
         },
+        "profileCommendations": {
+          "description": "COMPONENT TYPE: SocialCommendations",
+          "type": "object",
+          "allOf": [
+            {
+              "$ref": "#/definitions/SingleComponentResponseOfDestinySocialCommendationsComponent"
+            }
+          ],
+          "x-destiny-component-type-dependency": "SocialCommendations"
+        },
         "characters": {
           "description": "Basic information about each character, keyed by the CharacterId.\r\nCOMPONENT TYPE: Characters",
           "type": "object",
@@ -30017,6 +30368,16 @@
             }
           ],
           "x-destiny-component-type-dependency": "CharacterInventories"
+        },
+        "characterLoadouts": {
+          "description": "The character loadouts, keyed by the Character's Id.\r\nCOMPONENT TYPE: CharacterLoadouts",
+          "type": "object",
+          "allOf": [
+            {
+              "$ref": "#/definitions/DictionaryComponentResponseOfint64AndDestinyLoadoutsComponent"
+            }
+          ],
+          "x-destiny-component-type-dependency": "CharacterLoadouts"
         },
         "characterProgressions": {
           "description": "Character-level progression data, keyed by the Character's Id.\r\nCOMPONENT TYPE: CharacterProgressions",
@@ -30393,6 +30754,22 @@
           "x-mapped-definition": {
             "$ref": "#/definitions/Destiny.Definitions.Seasons.DestinyEventCardDefinition"
           }
+        },
+        "currentGuardianRank": {
+          "format": "int32",
+          "description": "The 'current' Guardian Rank value, which starts at rank 1.",
+          "type": "integer",
+          "x-mapped-definition": {
+            "$ref": "#/definitions/Destiny.Definitions.GuardianRanks.DestinyGuardianRankDefinition"
+          }
+        },
+        "lifetimeHighestGuardianRank": {
+          "format": "int32",
+          "description": "The 'lifetime highest' Guardian Rank value, which starts at rank 1.",
+          "type": "integer",
+          "x-mapped-definition": {
+            "$ref": "#/definitions/Destiny.Definitions.GuardianRanks.DestinyGuardianRankDefinition"
+          }
         }
       },
       "x-destiny-component-type-dependency": "Profiles"
@@ -30491,6 +30868,49 @@
           "type": "string"
         }
       }
+    },
+    "Destiny.Definitions.GuardianRanks.DestinyGuardianRankDefinition": {
+      "type": "object",
+      "properties": {
+        "displayProperties": {
+          "$ref": "#/definitions/Destiny.Definitions.Common.DestinyDisplayPropertiesDefinition"
+        },
+        "rankNumber": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "presentationNodeHash": {
+          "format": "uint32",
+          "type": "integer",
+          "x-mapped-definition": {
+            "$ref": "#/definitions/Destiny.Definitions.Presentation.DestinyPresentationNodeDefinition"
+          }
+        },
+        "foregroundImagePath": {
+          "type": "string"
+        },
+        "overlayImagePath": {
+          "type": "string"
+        },
+        "overlayMaskImagePath": {
+          "type": "string"
+        },
+        "hash": {
+          "format": "uint32",
+          "description": "The unique identifier for this entity. Guaranteed to be unique for the type of entity, but not globally.\r\nWhen entities refer to each other in Destiny content, it is this hash that they are referring to.",
+          "type": "integer"
+        },
+        "index": {
+          "format": "int32",
+          "description": "The index of the entity as it was found in the investment tables.",
+          "type": "integer"
+        },
+        "redacted": {
+          "description": "If this is true, then there is an entity with this identifier/type combination, but BNet is not yet allowed to show it. Sorry!",
+          "type": "boolean"
+        }
+      },
+      "x-mobile-manifest-name": "GuardianRanks"
     },
     "SingleComponentResponseOfDestinyProfileComponent": {
       "type": "object",
@@ -31791,6 +32211,174 @@
         }
       }
     },
+    "Destiny.Components.Social.DestinySocialCommendationsComponent": {
+      "type": "object",
+      "properties": {
+        "totalScore": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "scoreDetailValues": {
+          "type": "array",
+          "items": {
+            "format": "int32",
+            "type": "integer"
+          }
+        },
+        "commendationNodeScoresByHash": {
+          "type": "object",
+          "additionalProperties": {
+            "format": "int32",
+            "type": "integer"
+          },
+          "x-mapped-definition": {
+            "$ref": "#/definitions/Destiny.Definitions.Social.DestinySocialCommendationNodeDefinition"
+          }
+        },
+        "commendationScoresByHash": {
+          "type": "object",
+          "additionalProperties": {
+            "format": "int32",
+            "type": "integer"
+          },
+          "x-mapped-definition": {
+            "$ref": "#/definitions/Destiny.Definitions.Social.DestinySocialCommendationDefinition"
+          }
+        }
+      },
+      "x-destiny-component-type-dependency": "SocialCommendations"
+    },
+    "Destiny.Definitions.Social.DestinySocialCommendationNodeDefinition": {
+      "type": "object",
+      "properties": {
+        "displayProperties": {
+          "$ref": "#/definitions/Destiny.Definitions.Common.DestinyDisplayPropertiesDefinition"
+        },
+        "color": {
+          "description": "The color associated with this group of commendations.",
+          "type": "object",
+          "allOf": [
+            {
+              "$ref": "#/definitions/Destiny.Misc.DestinyColor"
+            }
+          ]
+        },
+        "parentCommendationNodeHash": {
+          "format": "uint32",
+          "type": "integer",
+          "x-mapped-definition": {
+            "$ref": "#/definitions/Destiny.Definitions.Social.DestinySocialCommendationNodeDefinition"
+          }
+        },
+        "childCommendationNodeHashes": {
+          "description": "A list of hashes that map to child commendation nodes. Only the root commendations node is expected to have child nodes.",
+          "type": "array",
+          "items": {
+            "format": "uint32",
+            "type": "integer"
+          },
+          "x-mapped-definition": {
+            "$ref": "#/definitions/Destiny.Definitions.Social.DestinySocialCommendationNodeDefinition"
+          }
+        },
+        "childCommendationHashes": {
+          "description": "A list of hashes that map to child commendations.",
+          "type": "array",
+          "items": {
+            "format": "uint32",
+            "type": "integer"
+          },
+          "x-mapped-definition": {
+            "$ref": "#/definitions/Destiny.Definitions.Social.DestinySocialCommendationDefinition"
+          }
+        },
+        "hash": {
+          "format": "uint32",
+          "description": "The unique identifier for this entity. Guaranteed to be unique for the type of entity, but not globally.\r\nWhen entities refer to each other in Destiny content, it is this hash that they are referring to.",
+          "type": "integer"
+        },
+        "index": {
+          "format": "int32",
+          "description": "The index of the entity as it was found in the investment tables.",
+          "type": "integer"
+        },
+        "redacted": {
+          "description": "If this is true, then there is an entity with this identifier/type combination, but BNet is not yet allowed to show it. Sorry!",
+          "type": "boolean"
+        }
+      },
+      "x-mobile-manifest-name": "SocialCommendationNodes"
+    },
+    "Destiny.Definitions.Social.DestinySocialCommendationDefinition": {
+      "type": "object",
+      "properties": {
+        "displayProperties": {
+          "$ref": "#/definitions/Destiny.Definitions.Common.DestinyDisplayPropertiesDefinition"
+        },
+        "cardImagePath": {
+          "type": "string"
+        },
+        "color": {
+          "$ref": "#/definitions/Destiny.Misc.DestinyColor"
+        },
+        "displayPriority": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "activityGivingLimit": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "parentCommendationNodeHash": {
+          "format": "uint32",
+          "type": "integer",
+          "x-mapped-definition": {
+            "$ref": "#/definitions/Destiny.Definitions.Social.DestinySocialCommendationNodeDefinition"
+          }
+        },
+        "displayActivities": {
+          "description": "The display properties for the the activities that this commendation is available in.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Destiny.Definitions.Common.DestinyDisplayPropertiesDefinition"
+          }
+        },
+        "hash": {
+          "format": "uint32",
+          "description": "The unique identifier for this entity. Guaranteed to be unique for the type of entity, but not globally.\r\nWhen entities refer to each other in Destiny content, it is this hash that they are referring to.",
+          "type": "integer"
+        },
+        "index": {
+          "format": "int32",
+          "description": "The index of the entity as it was found in the investment tables.",
+          "type": "integer"
+        },
+        "redacted": {
+          "description": "If this is true, then there is an entity with this identifier/type combination, but BNet is not yet allowed to show it. Sorry!",
+          "type": "boolean"
+        }
+      },
+      "x-mobile-manifest-name": "SocialCommendations"
+    },
+    "SingleComponentResponseOfDestinySocialCommendationsComponent": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "$ref": "#/definitions/Destiny.Components.Social.DestinySocialCommendationsComponent"
+        },
+        "privacy": {
+          "format": "int32",
+          "type": "integer",
+          "x-enum-reference": {
+            "$ref": "#/components/schemas/Components.ComponentPrivacySetting"
+          }
+        },
+        "disabled": {
+          "description": "If true, this component is disabled.",
+          "type": "boolean"
+        }
+      }
+    },
     "Destiny.Entities.Characters.DestinyCharacterComponent": {
       "description": "This component contains base properties of the character. You'll probably want to always request this component, but hey you do you.",
       "type": "object",
@@ -32050,6 +32638,161 @@
           "type": "object",
           "additionalProperties": {
             "$ref": "#/definitions/Destiny.Entities.Inventory.DestinyInventoryComponent"
+          }
+        },
+        "privacy": {
+          "format": "int32",
+          "type": "integer",
+          "x-enum-reference": {
+            "$ref": "#/components/schemas/Components.ComponentPrivacySetting"
+          }
+        },
+        "disabled": {
+          "description": "If true, this component is disabled.",
+          "type": "boolean"
+        }
+      }
+    },
+    "Destiny.Components.Loadouts.DestinyLoadoutsComponent": {
+      "type": "object",
+      "properties": {
+        "loadouts": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Destiny.Components.Loadouts.DestinyLoadoutComponent"
+          }
+        }
+      },
+      "x-destiny-component-type-dependency": "CharacterLoadouts"
+    },
+    "Destiny.Components.Loadouts.DestinyLoadoutComponent": {
+      "type": "object",
+      "properties": {
+        "colorHash": {
+          "format": "uint32",
+          "type": "integer",
+          "x-mapped-definition": {
+            "$ref": "#/definitions/Destiny.Definitions.Loadouts.DestinyLoadoutColorDefinition"
+          }
+        },
+        "iconHash": {
+          "format": "uint32",
+          "type": "integer",
+          "x-mapped-definition": {
+            "$ref": "#/definitions/Destiny.Definitions.Loadouts.DestinyLoadoutIconDefinition"
+          }
+        },
+        "nameHash": {
+          "format": "uint32",
+          "type": "integer",
+          "x-mapped-definition": {
+            "$ref": "#/definitions/Destiny.Definitions.Loadouts.DestinyLoadoutNameDefinition"
+          }
+        },
+        "items": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Destiny.Components.Loadouts.DestinyLoadoutItemComponent"
+          }
+        }
+      }
+    },
+    "Destiny.Components.Loadouts.DestinyLoadoutItemComponent": {
+      "type": "object",
+      "properties": {
+        "itemInstanceId": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "plugItemHashes": {
+          "type": "array",
+          "items": {
+            "format": "uint32",
+            "type": "integer"
+          },
+          "x-mapped-definition": {
+            "$ref": "#/definitions/Destiny.Definitions.DestinyInventoryItemDefinition"
+          }
+        }
+      }
+    },
+    "Destiny.Definitions.Loadouts.DestinyLoadoutColorDefinition": {
+      "type": "object",
+      "properties": {
+        "colorImagePath": {
+          "type": "string"
+        },
+        "hash": {
+          "format": "uint32",
+          "description": "The unique identifier for this entity. Guaranteed to be unique for the type of entity, but not globally.\r\nWhen entities refer to each other in Destiny content, it is this hash that they are referring to.",
+          "type": "integer"
+        },
+        "index": {
+          "format": "int32",
+          "description": "The index of the entity as it was found in the investment tables.",
+          "type": "integer"
+        },
+        "redacted": {
+          "description": "If this is true, then there is an entity with this identifier/type combination, but BNet is not yet allowed to show it. Sorry!",
+          "type": "boolean"
+        }
+      },
+      "x-mobile-manifest-name": "LoadoutColors"
+    },
+    "Destiny.Definitions.Loadouts.DestinyLoadoutIconDefinition": {
+      "type": "object",
+      "properties": {
+        "iconImagePath": {
+          "type": "string"
+        },
+        "hash": {
+          "format": "uint32",
+          "description": "The unique identifier for this entity. Guaranteed to be unique for the type of entity, but not globally.\r\nWhen entities refer to each other in Destiny content, it is this hash that they are referring to.",
+          "type": "integer"
+        },
+        "index": {
+          "format": "int32",
+          "description": "The index of the entity as it was found in the investment tables.",
+          "type": "integer"
+        },
+        "redacted": {
+          "description": "If this is true, then there is an entity with this identifier/type combination, but BNet is not yet allowed to show it. Sorry!",
+          "type": "boolean"
+        }
+      },
+      "x-mobile-manifest-name": "LoadoutIcons"
+    },
+    "Destiny.Definitions.Loadouts.DestinyLoadoutNameDefinition": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "hash": {
+          "format": "uint32",
+          "description": "The unique identifier for this entity. Guaranteed to be unique for the type of entity, but not globally.\r\nWhen entities refer to each other in Destiny content, it is this hash that they are referring to.",
+          "type": "integer"
+        },
+        "index": {
+          "format": "int32",
+          "description": "The index of the entity as it was found in the investment tables.",
+          "type": "integer"
+        },
+        "redacted": {
+          "description": "If this is true, then there is an entity with this identifier/type combination, but BNet is not yet allowed to show it. Sorry!",
+          "type": "boolean"
+        }
+      },
+      "x-mobile-manifest-name": "LoadoutNames"
+    },
+    "DictionaryComponentResponseOfint64AndDestinyLoadoutsComponent": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "object",
+          "additionalProperties": {
+            "x-destiny-component-type-dependency": "CharacterLoadouts",
+            "$ref": "#/definitions/Destiny.Components.Loadouts.DestinyLoadoutsComponent"
           }
         },
         "privacy": {
@@ -32532,7 +33275,8 @@
             "87",
             "88",
             "89",
-            "90"
+            "90",
+            "91"
           ],
           "type": "integer",
           "x-enum-values": [
@@ -32868,6 +33612,10 @@
             {
               "numericValue": "90",
               "identifier": "IronBannerRift"
+            },
+            {
+              "numericValue": "91",
+              "identifier": "IronBannerZoneControl"
             }
           ]
         },
@@ -33006,7 +33754,8 @@
             "87",
             "88",
             "89",
-            "90"
+            "90",
+            "91"
           ],
           "type": "integer",
           "x-enum-values": [
@@ -33342,6 +34091,10 @@
             {
               "numericValue": "90",
               "identifier": "IronBannerRift"
+            },
+            {
+              "numericValue": "91",
+              "identifier": "IronBannerZoneControl"
             }
           ]
         }
@@ -34404,7 +35157,8 @@
             "87",
             "88",
             "89",
-            "90"
+            "90",
+            "91"
           ],
           "type": "integer",
           "x-enum-values": [
@@ -34740,6 +35494,10 @@
             {
               "numericValue": "90",
               "identifier": "IronBannerRift"
+            },
+            {
+              "numericValue": "91",
+              "identifier": "IronBannerZoneControl"
             }
           ]
         },
@@ -35562,7 +36320,10 @@
         "2",
         "4",
         "8",
-        "16"
+        "16",
+        "32",
+        "64",
+        "128"
       ],
       "type": "integer",
       "x-enum-values": [
@@ -35593,8 +36354,23 @@
         },
         {
           "numericValue": "16",
-          "identifier": "ItemNotOnCharacter",
-          "description": "This item can't be equipped on the character requested, because it must be in that character's inventory first. Transfer the item to the character you want to equip it before you attempt to equip it."
+          "identifier": "ItemWrapped",
+          "description": "This item is 'wrapped' and must be unwrapped before being equipped. NOTE: This value used to be called ItemNotOnCharacter but that is no longer accurate."
+        },
+        {
+          "numericValue": "32",
+          "identifier": "ItemNotLoaded",
+          "description": "This item is not yet loaded and cannot be equipped yet."
+        },
+        {
+          "numericValue": "64",
+          "identifier": "ItemEquipBlocklisted",
+          "description": "This item is block-listed and cannot be equipped."
+        },
+        {
+          "numericValue": "128",
+          "identifier": "ItemLoadoutRequirementNotMet",
+          "description": "This item does not meet the loadout requirements for the current activity"
         }
       ]
     },
@@ -36310,6 +37086,16 @@
           ],
           "x-destiny-component-type-dependency": "CharacterEquipment"
         },
+        "loadouts": {
+          "description": "The loadouts available to the character.\r\nCOMPONENT TYPE: CharacterLoadouts",
+          "type": "object",
+          "allOf": [
+            {
+              "$ref": "#/definitions/SingleComponentResponseOfDestinyLoadoutsComponent"
+            }
+          ],
+          "x-destiny-component-type-dependency": "CharacterLoadouts"
+        },
         "kiosks": {
           "description": "Items available from Kiosks that are available to this specific character. \r\nCOMPONENT TYPE: Kiosks",
           "type": "object",
@@ -36452,6 +37238,25 @@
       "properties": {
         "data": {
           "$ref": "#/definitions/Destiny.Entities.Characters.DestinyCharacterActivitiesComponent"
+        },
+        "privacy": {
+          "format": "int32",
+          "type": "integer",
+          "x-enum-reference": {
+            "$ref": "#/components/schemas/Components.ComponentPrivacySetting"
+          }
+        },
+        "disabled": {
+          "description": "If true, this component is disabled.",
+          "type": "boolean"
+        }
+      }
+    },
+    "SingleComponentResponseOfDestinyLoadoutsComponent": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "$ref": "#/definitions/Destiny.Components.Loadouts.DestinyLoadoutsComponent"
         },
         "privacy": {
           "format": "int32",
@@ -37411,7 +38216,9 @@
         "32768",
         "65536",
         "131072",
-        "262144"
+        "262144",
+        "524288",
+        "1048576"
       ],
       "type": "integer",
       "x-enum-values": [
@@ -37514,6 +38321,15 @@
           "numericValue": "262144",
           "identifier": "Locked",
           "description": "This indicates that the sale item is locked."
+        },
+        {
+          "numericValue": "524288",
+          "identifier": "Paracausal",
+          "description": "This indicates that the sale item is paracausal."
+        },
+        {
+          "numericValue": "1048576",
+          "identifier": "Cryptarch"
         }
       ]
     },
@@ -38545,6 +39361,60 @@
             "format": "int64",
             "type": "integer"
           }
+        },
+        "characterId": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "membershipType": {
+          "format": "int32",
+          "type": "integer",
+          "x-enum-reference": {
+            "$ref": "#/components/schemas/BungieMembershipType"
+          }
+        }
+      }
+    },
+    "Destiny.Requests.Actions.DestinyLoadoutActionRequest": {
+      "type": "object",
+      "properties": {
+        "loadoutIndex": {
+          "format": "int32",
+          "description": "The index of the loadout for this action request.",
+          "type": "integer"
+        },
+        "characterId": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "membershipType": {
+          "format": "int32",
+          "type": "integer",
+          "x-enum-reference": {
+            "$ref": "#/components/schemas/BungieMembershipType"
+          }
+        }
+      }
+    },
+    "Destiny.Requests.Actions.DestinyLoadoutUpdateActionRequest": {
+      "type": "object",
+      "properties": {
+        "colorHash": {
+          "format": "uint32",
+          "type": "integer"
+        },
+        "iconHash": {
+          "format": "uint32",
+          "type": "integer"
+        },
+        "nameHash": {
+          "format": "uint32",
+          "type": "integer"
+        },
+        "loadoutIndex": {
+          "format": "int32",
+          "description": "The index of the loadout for this action request.",
+          "type": "integer"
         },
         "characterId": {
           "format": "int64",
@@ -40227,7 +41097,8 @@
             "87",
             "88",
             "89",
-            "90"
+            "90",
+            "91"
           ],
           "type": "integer",
           "x-enum-values": [
@@ -40563,6 +41434,10 @@
             {
               "numericValue": "90",
               "identifier": "IronBannerRift"
+            },
+            {
+              "numericValue": "91",
+              "identifier": "IronBannerZoneControl"
             }
           ]
         }
@@ -40674,7 +41549,8 @@
             "87",
             "88",
             "89",
-            "90"
+            "90",
+            "91"
           ],
           "type": "integer",
           "x-enum-values": [
@@ -41010,6 +41886,10 @@
             {
               "numericValue": "90",
               "identifier": "IronBannerRift"
+            },
+            {
+              "numericValue": "91",
+              "identifier": "IronBannerZoneControl"
             }
           ]
         }
@@ -41895,6 +42775,24 @@
         },
         "titleBeforeModeration": {
           "type": "string"
+        },
+        "ownerCurrentGuardianRankSnapshot": {
+          "format": "int32",
+          "type": "integer",
+          "x-mapped-definition": {
+            "$ref": "#/definitions/Destiny.Definitions.GuardianRanks.DestinyGuardianRankDefinition"
+          }
+        },
+        "ownerHighestLifetimeGuardianRankSnapshot": {
+          "format": "int32",
+          "type": "integer",
+          "x-mapped-definition": {
+            "$ref": "#/definitions/Destiny.Definitions.GuardianRanks.DestinyGuardianRankDefinition"
+          }
+        },
+        "ownerTotalCommendationScoreSnapshot": {
+          "format": "int32",
+          "type": "integer"
         }
       }
     },
@@ -42660,6 +43558,27 @@
             "$ref": "#/definitions/Destiny.Definitions.Presentation.DestinyPresentationNodeDefinition"
           }
         },
+        "loadoutConstantsHash": {
+          "format": "uint32",
+          "type": "integer",
+          "x-mapped-definition": {
+            "$ref": "#/definitions/Destiny.Definitions.Loadouts.DestinyLoadoutConstantsDefinition"
+          }
+        },
+        "guardianRankConstantsHash": {
+          "format": "uint32",
+          "type": "integer",
+          "x-mapped-definition": {
+            "$ref": "#/definitions/Destiny.Definitions.GuardianRanks.DestinyGuardianRankConstantsDefinition"
+          }
+        },
+        "guardianRanksRootNodeHash": {
+          "format": "uint32",
+          "type": "integer",
+          "x-mapped-definition": {
+            "$ref": "#/definitions/Destiny.Definitions.Presentation.DestinyPresentationNodeDefinition"
+          }
+        },
         "currentRankProgressionHashes": {
           "type": "array",
           "items": {
@@ -42742,6 +43661,178 @@
           "x-mapped-definition": {
             "$ref": "#/definitions/Destiny.Definitions.Seasons.DestinySeasonDefinition"
           }
+        }
+      }
+    },
+    "Destiny.Definitions.Loadouts.DestinyLoadoutConstantsDefinition": {
+      "type": "object",
+      "properties": {
+        "displayProperties": {
+          "$ref": "#/definitions/Destiny.Definitions.Common.DestinyDisplayPropertiesDefinition"
+        },
+        "whiteIconImagePath": {
+          "description": "This is the same icon as the one in the display properties, offered here as well with a more descriptive name.",
+          "type": "string"
+        },
+        "blackIconImagePath": {
+          "description": "This is a color-inverted version of the whiteIconImagePath.",
+          "type": "string"
+        },
+        "loadoutCountPerCharacter": {
+          "format": "int32",
+          "description": "The maximum number of loadouts available to each character. The loadouts component API response can return fewer loadouts than this, as more loadouts are unlocked by reaching higher Guardian Ranks.",
+          "type": "integer"
+        },
+        "loadoutPreviewFilterOutSocketCategoryHashes": {
+          "description": "A list of the socket category hashes to be filtered out of loadout item preview displays.",
+          "type": "array",
+          "items": {
+            "format": "uint32",
+            "type": "integer"
+          },
+          "x-mapped-definition": {
+            "$ref": "#/definitions/Destiny.Definitions.Sockets.DestinySocketCategoryDefinition"
+          }
+        },
+        "loadoutPreviewFilterOutSocketTypeHashes": {
+          "description": "A list of the socket type hashes to be filtered out of loadout item preview displays.",
+          "type": "array",
+          "items": {
+            "format": "uint32",
+            "type": "integer"
+          },
+          "x-mapped-definition": {
+            "$ref": "#/definitions/Destiny.Definitions.Sockets.DestinySocketTypeDefinition"
+          }
+        },
+        "loadoutNameHashes": {
+          "description": "A list of the loadout name hashes in index order, for convenience.",
+          "type": "array",
+          "items": {
+            "format": "uint32",
+            "type": "integer"
+          },
+          "x-mapped-definition": {
+            "$ref": "#/definitions/Destiny.Definitions.Loadouts.DestinyLoadoutNameDefinition"
+          }
+        },
+        "loadoutIconHashes": {
+          "description": "A list of the loadout icon hashes in index order, for convenience.",
+          "type": "array",
+          "items": {
+            "format": "uint32",
+            "type": "integer"
+          },
+          "x-mapped-definition": {
+            "$ref": "#/definitions/Destiny.Definitions.Loadouts.DestinyLoadoutIconDefinition"
+          }
+        },
+        "loadoutColorHashes": {
+          "description": "A list of the loadout color hashes in index order, for convenience.",
+          "type": "array",
+          "items": {
+            "format": "uint32",
+            "type": "integer"
+          },
+          "x-mapped-definition": {
+            "$ref": "#/definitions/Destiny.Definitions.Loadouts.DestinyLoadoutColorDefinition"
+          }
+        },
+        "hash": {
+          "format": "uint32",
+          "description": "The unique identifier for this entity. Guaranteed to be unique for the type of entity, but not globally.\r\nWhen entities refer to each other in Destiny content, it is this hash that they are referring to.",
+          "type": "integer"
+        },
+        "index": {
+          "format": "int32",
+          "description": "The index of the entity as it was found in the investment tables.",
+          "type": "integer"
+        },
+        "redacted": {
+          "description": "If this is true, then there is an entity with this identifier/type combination, but BNet is not yet allowed to show it. Sorry!",
+          "type": "boolean"
+        }
+      },
+      "x-mobile-manifest-name": "LoadoutConstants"
+    },
+    "Destiny.Definitions.GuardianRanks.DestinyGuardianRankConstantsDefinition": {
+      "type": "object",
+      "properties": {
+        "displayProperties": {
+          "$ref": "#/definitions/Destiny.Definitions.Common.DestinyDisplayPropertiesDefinition"
+        },
+        "rankCount": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "rootNodeHash": {
+          "format": "uint32",
+          "type": "integer",
+          "x-mapped-definition": {
+            "$ref": "#/definitions/Destiny.Definitions.Presentation.DestinyPresentationNodeDefinition"
+          }
+        },
+        "iconBackgrounds": {
+          "$ref": "#/definitions/Destiny.Definitions.GuardianRanks.DestinyGuardianRankIconBackgroundsDefinition"
+        },
+        "hash": {
+          "format": "uint32",
+          "description": "The unique identifier for this entity. Guaranteed to be unique for the type of entity, but not globally.\r\nWhen entities refer to each other in Destiny content, it is this hash that they are referring to.",
+          "type": "integer"
+        },
+        "index": {
+          "format": "int32",
+          "description": "The index of the entity as it was found in the investment tables.",
+          "type": "integer"
+        },
+        "redacted": {
+          "description": "If this is true, then there is an entity with this identifier/type combination, but BNet is not yet allowed to show it. Sorry!",
+          "type": "boolean"
+        }
+      },
+      "x-mobile-manifest-name": "GuardianRankConstants"
+    },
+    "Destiny.Definitions.GuardianRanks.DestinyGuardianRankIconBackgroundsDefinition": {
+      "type": "object",
+      "properties": {
+        "backgroundEmptyBorderedImagePath": {
+          "type": "string"
+        },
+        "backgroundEmptyBlueGradientBorderedImagePath": {
+          "type": "string"
+        },
+        "backgroundFilledBlueBorderedImagePath": {
+          "type": "string"
+        },
+        "backgroundFilledBlueGradientBorderedImagePath": {
+          "type": "string"
+        },
+        "backgroundFilledBlueLowAlphaImagePath": {
+          "type": "string"
+        },
+        "backgroundFilledBlueMediumAlphaImagePath": {
+          "type": "string"
+        },
+        "backgroundFilledGrayMediumAlphaBorderedImagePath": {
+          "type": "string"
+        },
+        "backgroundFilledGrayHeavyAlphaBorderedImagePath": {
+          "type": "string"
+        },
+        "backgroundFilledWhiteMediumAlphaImagePath": {
+          "type": "string"
+        },
+        "backgroundFilledWhiteImagePath": {
+          "type": "string"
+        },
+        "backgroundPlateWhiteImagePath": {
+          "type": "string"
+        },
+        "backgroundPlateBlackImagePath": {
+          "type": "string"
+        },
+        "backgroundPlateBlackAlphaImagePath": {
+          "type": "string"
         }
       }
     },
