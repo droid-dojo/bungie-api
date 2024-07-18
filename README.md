@@ -6,6 +6,29 @@ Documentation as one single, gigantic page: https://bungie-net.github.io
 
 This section will be added to as time goes by - we're working with it as we go!
 
+## 2024-07-16 Update for Lost Sectors
+
+- Added `availableActivityInteractables` to `DestinyCharacterActivitiesComponent`.
+  - Finally adds support for today's Expert and Master Lost Sector activities.
+  - Also includes in-world activity interactables (totems) for campaign missions and the like.
+  - Cross-reference with `availableActivities` for those that can also be launched from the Director.
+
+## 2024-07-10 Update for The Final Shape
+
+- Added `acts` to `DestinySeasonDefinition` for the new Episodes.
+- Added an `isVisible` flag to `DestinyArtifactTierItem`.
+- Added a new `DestinyActivityModeType` enum value for 'Relic' activities.
+- Added a `recordTypeName` to `DestinyRecordDefinition`.
+- Replaced `obscuredString` with `obscuredName` and `obscuredDescription` on record definition state blocks.
+- Added `commendationNodePercentagesByHash` to `DestinySocialCommendationsComponent`.
+- Added a `tintedIcon` to `DestinySocialCommendationNodeDefinition`.
+- Added `guardianRankHashes` to `DestinyGuardianRankConstantsDefinition`.
+- Added the `renewedGuardianRank` to `DestinyProfileComponent`.
+
+## 2023-02-28 Update for Lightfall
+
+- Added Loadouts, Guardian Ranks, and Commendations!
+
 ## 2022-12-06 Update for the Season of the Seraph
 
 - Added `responseMintedTimestamp` and `secondaryComponentsMintedTimestamp` to DestinyProfileResponse.
